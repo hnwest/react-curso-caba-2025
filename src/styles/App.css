@@ -1,0 +1,19 @@
+.header__logo{
+    height: 40px;
+    margin-right: 10px;
+}
+.product-image_container 
+ {
+    height: 360px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+
+}
+
+.product-image_container img 
+{
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
