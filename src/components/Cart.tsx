@@ -32,7 +32,11 @@ const Cart = () => {
                     ))}
                 </tbody>
             </table>
-            
+            <div className="grid place-items-end mt-4">
+                <span className="text-xl font-bold">
+                    Total: $ {cartItems.reduce((total, item) => total + item.price * item.quantity, 0).toLocaleString()}
+                </span>
+            </div>
         </div>
     );
 };

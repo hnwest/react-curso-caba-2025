@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import CartItemsCount from "@/components/CartItemsCount";
 export default function Header() {
   return (
     <header className="header bg-yellow-300 shadow-md p-4">
@@ -30,11 +30,12 @@ export default function Header() {
               </Link>            
               <Link 
                 to="/cart"
-                className="text-gray-800 hover:text-black transition-colors"
+                className="text-gray-800 hover:text-black transition-colors shopping-cart-link flex items-center"
                 title="Carrito"
               >
                 <FontAwesomeIcon icon="shopping-cart" className="text-lg mr-2" />
-                Carrito
+                  Carrito
+                  <CartItemsCount />
               </Link>
              
             </nav>
