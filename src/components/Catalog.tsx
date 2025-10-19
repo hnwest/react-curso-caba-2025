@@ -48,7 +48,7 @@ const Catalog = () => {
             {!loading && products && (
                 <div className="grid md:grid-cols-4  gap-4">
                     {products.map(product => (
-                        <Product key={product.id} product={product} />
+                        <Product key={product.id} product={product} viewOnly={true} />
                     ))}
                 </div>
             )}
