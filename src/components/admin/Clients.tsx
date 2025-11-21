@@ -6,7 +6,7 @@ const Clients = () => {
    <>
       <div
         id="admin-dashboard"
-        className="grid grid-cols-[256px_1fr] min-h-screen"
+        className="min-h-screen flex flex-col md:grid md:grid-cols-[200px_1fr]"
       >
         <AdminMenu />
         <div className="bg-gray-100 p-8" id="admin-dashboard-content">
@@ -15,29 +15,42 @@ const Clients = () => {
                 <p className="text-gray-600">Gestione los clientes</p>
             </div>
 
-            <table className="w-full table-auto border-collapse border border-gray-300">
-              <thead>
-                <tr>
-                  <th className="text-left p-4 mb-4">ID</th>
-                  <th className="text-left p-4 mb-4">Nombre</th>
-                  <th className="text-left p-4 mb-4">Email</th>
-                  <th className="text-left p-4 mb-4">Rol</th>
-                  <th className="text-left p-4 mb-4">Fecha Registro</th>
-                </tr>
-              </thead>
-              <tbody>
-                {mockUsers.map((user) => (
-                  <tr key={user.id} className="border bg-white border-gray-300">
-                    <td className="p-4">{user.id}</td>
-                    <td className="p-4">{user.name}</td>
-                    <td className="p-4">{user.email}</td>
-                    <td className="p-4">{user.role}</td>
-                    <td className="p-4">{user.registeredAt}</td>
-                    
+            <div className="hidden md:block">
+              <table className="w-full table-auto border-collapse border border-gray-300">
+                <thead>
+                  <tr>
+                    <th className="text-left p-4 mb-4">ID</th>
+                    <th className="text-left p-4 mb-4">Nombre</th>
+                    <th className="text-left p-4 mb-4">Email</th>
+                    <th className="text-left p-4 mb-4">Rol</th>
+                    <th className="text-left p-4 mb-4">Fecha Registro</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {mockUsers.map((user) => (
+                    <tr key={user.id} className="border bg-white border-gray-300">
+                      <td className="p-4">{user.id}</td>
+                      <td className="p-4">{user.name}</td>
+                      <td className="p-4">{user.email}</td>
+                      <td className="p-4">{user.role}</td>
+                      <td className="p-4">{user.registeredAt}</td>
+                      
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="md:hidden space-y-4">
+              {mockUsers.map((user) => (
+                <div key={user.id} className="border border-gray-300 rounded p-4 bg-white">
+                  <h3 className="font-semibold">{user.name}</h3>
+                  <p>Email: {user.email}</p>
+                  <p>Rol: {user.role}</p>
+                  <p>Fecha Registro: {user.registeredAt}</p>
+                </div>
+              ))}
+            </div>
         </div>
       </div>
       </>

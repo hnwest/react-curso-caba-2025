@@ -136,7 +136,7 @@ const Products = () => {
     <>
       <div
         id="admin-dashboard"
-        className="grid grid-cols-[256px_1fr] min-h-screen"
+        className="min-h-screen flex flex-col md:grid md:grid-cols-[200px_1fr]"
       >
         <AdminMenu />
 
@@ -159,61 +159,104 @@ const Products = () => {
               </button>
             </div>
 
-            <table className="w-full table-auto border-collapse border border-gray-300">
-              <thead>
-                <tr>
-                  <th className="text-left image-preview p-4 mb-4">Imagen</th>
-                  <th className="text-left  p-4 mb-4">Producto</th>
-                  <th className="text-left  p-4 mb-4">Descripcion</th>
-                  <th className="text-left  p-4 mb-4">Precio</th>
-                  <th className="text-left  p-4 mb-4">Categoria</th>
-                  <th className="text-left  p-4 mb-4">Inventario</th>
-                  <th className="text-left  p-4 mb-4">Acciones</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                {products.map((product) => (
-                  <tr
-                    key={product.id}
-                    className="border bg-white border-gray-300"
-                  >
-                    <td className=" p-4">
-                      {product.image ? (
-                        <img
-                          src={product.image}
-                          alt={product.title}
-                          className="w-16 h-16 object-cover rounded"
-                        />
-                      ) : (
-                        <div className="w-16 h-16 bg-gray-200 flex items-center justify-center text-center text-sm rounded">
-                          Sin Imagen
-                        </div>
-                      )}
-                    </td>
-                    <td className=" p-4">{product.title}</td>
-                    <td className=" p-4">{product.description}</td>
-                    <td className=" p-4">{product.price}</td>
-                    <td className=" p-4">{product.category}</td>
-                    <td className=" p-4">{product.inventory}</td>
-                    <td className="flex gap-2  p-4">
-                      <button
-                        onClick={() => product.id && handleEditProduct(product.id)}
-                        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                      >
-                        Editar
-                      </button>
-                      <button
-                        onClick={() => product.id && handleDeleteProduct(product.id)}
-                        className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-                      >
-                        X
-                      </button>
-                    </td>
+            <div className="hidden md:block">
+              <table className="w-full table-auto border-collapse border border-gray-300">
+                <thead>
+                  <tr>
+                    <th className="text-left image-preview p-4 mb-4">Imagen</th>
+                    <th className="text-left  p-4 mb-4">Producto</th>
+                    <th className="text-left  p-4 mb-4">Descripcion</th>
+                    <th className="text-left  p-4 mb-4">Precio</th>
+                    <th className="text-left  p-4 mb-4">Categoria</th>
+                    <th className="text-left  p-4 mb-4">Inventario</th>
+                    <th className="text-left  p-4 mb-4">Acciones</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+
+                <tbody>
+                  {products.map((product) => (
+                    <tr
+                      key={product.id}
+                      className="border bg-white border-gray-300"
+                    >
+                      <td className=" p-4">
+                        {product.image ? (
+                          <img
+                            src={product.image}
+                            alt={product.title}
+                            className="w-16 h-16 object-cover rounded"
+                          />
+                        ) : (
+                          <div className="w-16 h-16 bg-gray-200 flex items-center justify-center text-center text-sm rounded">
+                            Sin Imagen
+                          </div>
+                        )}
+                      </td>
+                      <td className=" p-4">{product.title}</td>
+                      <td className=" p-4">{product.description}</td>
+                      <td className=" p-4">{product.price}</td>
+                      <td className=" p-4">{product.category}</td>
+                      <td className=" p-4">{product.inventory}</td>
+                      <td className="flex gap-2  p-4">
+                        <button
+                          onClick={() => product.id && handleEditProduct(product.id)}
+                          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                        >
+                          Editar
+                        </button>
+                        <button
+                          onClick={() => product.id && handleDeleteProduct(product.id)}
+                          className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                        >
+                          X
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="md:hidden space-y-4">
+              {products.map((product) => (
+                <div key={product.id} className="border border-gray-300 rounded p-4 bg-white">
+                  <div className="flex items-center gap-4 mb-4">
+                    {product.image ? (
+                      <img
+                        src={product.image}
+                        alt={product.title}
+                        className="w-16 h-16 object-cover rounded"
+                      />
+                    ) : (
+                      <div className="w-16 h-16 bg-gray-200 flex items-center justify-center text-center text-sm rounded">
+                        Sin Imagen
+                      </div>
+                    )}
+                    <div>
+                      <h3 className="font-semibold">{product.title}</h3>
+                      <p className="text-gray-600">{product.category}</p>
+                    </div>
+                  </div>
+                  <p className="mb-2">{product.description}</p>
+                  <p className="mb-2">Precio: ${product.price}</p>
+                  <p className="mb-4">Inventario: {product.inventory}</p>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => product.id && handleEditProduct(product.id)}
+                      className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                    >
+                      Editar
+                    </button>
+                    <button
+                      onClick={() => product.id && handleDeleteProduct(product.id)}
+                      className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                    >
+                      X
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
