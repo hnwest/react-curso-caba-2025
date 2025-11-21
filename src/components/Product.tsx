@@ -21,7 +21,7 @@ const Product = (params: { product: iProduct; viewOnly?: boolean }) => {
   return (
     <article
       key={product.id}
-      className="border border-gray-300 rounded-lg shadow-sm p-4 bg-white product-card flex justify-between flex-col"
+      className="border border-gray-300 rounded-lg shadow-sm p-4 bg-white product-card flex justify-between flex-col w-full"
     >
       <div className="product-header">
         <div className="product-image_container mb-4">

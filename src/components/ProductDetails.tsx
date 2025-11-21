@@ -30,7 +30,7 @@ const ProductDetails = () => {
     if(loading) return <div>Loading...</div>
     
     return (
-          <div className="container max-w-[60%] mx-auto">
+          <div className="w-full p-2">
             <h2 className="text-2xl font-bold mt-4 mb-4">Detalle del Producto</h2>
 
             {loading && 
@@ -46,7 +46,7 @@ const ProductDetails = () => {
 
             {!loading && product && (
                 <>  
-                    <div className="grid place-items-center gap-4">
+                    <div className="w-full">
                         <Product key={product.id} product={product} viewOnly={false} />
                     </div>
                     <div className="m-4 justify-content-end">

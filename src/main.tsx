@@ -12,7 +12,7 @@ if (container) {
   root.render(
     <StrictMode>
       <CartProvider>
-        <Toaster position="top-right" />
+        <Toaster position="top-center" />
         <App />
       </CartProvider>
     </StrictMode>

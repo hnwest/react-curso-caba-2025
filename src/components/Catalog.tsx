@@ -107,37 +107,37 @@ const Catalog = (params?: {page:number, limit:number, searchTerm?: string}) => {
       <span className="text-gray-600 mb-4 block">
         Explora nuestra variedad de productos ({products_counter == 1 ? "1 disponible" : `${products_counter} disponibles`})
       </span>
-      <div className="mb-4 buscador mt-2">
+      <div className="mb-4 buscador mt-2 flex flex-col md:flex-row md:items-center gap-2">
         <input
           type="text"
           value={searchTerm}
           placeholder="Buscar productos..."
-          className="border w-md rounded border-gray-300 p-2 "
+          className="border w-full md:w-64 rounded border-gray-300 p-2 "
           onChange={handleSearchInput}
         />
-        <button
-          type="button"
-          className="cursor-pointer     p-2 ml-2 bg-yellow-300 rounded"
-          onClick={handleSearch}
-        >
-          <FontAwesomeIcon
-            icon="search"
-            className=" border-gray-300   text-gray-600 hover:text-black"
-          />
-        </button>
-        
-         <button
-          type="button"
-          className="cursor-pointer     p-2 ml-2 bg-yellow-300 rounded"
-          onClick={handleSearchReset}
-        >
-          <FontAwesomeIcon
-            icon="trash"
-            className=" border-gray-300   text-gray-600 hover:text-black"
-          />
-        </button>
- 
-       
+        <div className="flex gap-2">
+          <button
+            type="button"
+            className="cursor-pointer p-2 bg-yellow-300 rounded"
+            onClick={handleSearch}
+          >
+            <FontAwesomeIcon
+              icon="search"
+              className="text-gray-600 hover:text-black"
+            />
+          </button>
+          
+          <button
+            type="button"
+            className="cursor-pointer p-2 bg-yellow-300 rounded"
+            onClick={handleSearchReset}
+          >
+            <FontAwesomeIcon
+              icon="trash"
+              className="text-gray-600 hover:text-black"
+            />
+          </button>
+        </div>
       </div>
       {loading && (
         <div className="flex justify-center items-center mb-4 loader ">
