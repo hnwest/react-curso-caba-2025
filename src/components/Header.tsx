@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import CartItemsCount from "@/components/CartItemsCount";
+import { useAuthContext } from "@/AuthContext";
+
 export default function Header() {
+  const { isAuthenticated, role, logout } = useAuthContext();
+
   return (
     <header className="header bg-yellow-300 shadow-md p-4">
       <div className="container mx-auto">
@@ -30,13 +34,42 @@ export default function Header() {
               </Link>            
               <Link 
                 to="/cart"
-                className="text-gray-800 hover:text-black transition-colors shopping-cart-link flex items-center"
+                className="text-gray-800 hover:text-black transition-colors shopping-cart-link flex items-center cursor-pointer"
                 title="Carrito"
               >
                 <FontAwesomeIcon icon="shopping-cart" className="text-lg mr-2" />
                   Carrito
                   <CartItemsCount />
               </Link>
+              {role === 'admin' && (
+                <Link 
+                  to="/admin"
+                  className="text-gray-800 hover:text-black transition-colors flex items-center cursor-pointer"
+                  title="Panel Admin"
+                >
+                  <FontAwesomeIcon icon="cog" className="text-lg mr-2" />
+                  Admin
+                </Link>
+              )}
+              {isAuthenticated ? (
+                <button 
+                  onClick={logout}
+                  className="text-gray-800 hover:text-black transition-colors flex items-center cursor-pointer"
+                  title="Cerrar Sesión"
+                >
+                  <FontAwesomeIcon icon="sign-out-alt" className="text-lg mr-2" />
+                  Salir
+                </button>
+              ) : (
+                <Link 
+                  to="/login"
+                  className="text-gray-800 hover:text-black transition-colors flex items-center cursor-pointer"
+                  title="Login"
+                >
+                  <FontAwesomeIcon icon="user" className="text-lg mr-2" />
+                  Ingreso
+                </Link>
+              )}
              
             </nav>
           </div>

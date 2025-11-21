@@ -7,6 +7,8 @@ const Product = (params: { product: iProduct; viewOnly?: boolean }) => {
   const { product, viewOnly } = params;
   const { addItem } = useCartContext();
   const addToCart = (product: iProduct) => {
+    if (product.id === undefined) return;
+    
     const item: iCartItem = {
       id: product.id,
       name: product.title,
