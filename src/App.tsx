@@ -43,7 +43,7 @@ const AppContent = () => {
 
               {/** genero rutas del front */}
               <Route path="/" element={<Home />} />
-              <Route path="/catalog" element={<Catalog />} />
+              <Route path="/catalog" element={<Catalog {...{page: 1, limit: 5}} />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/product/:id" element={<ProductDetails />} />
               

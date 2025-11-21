@@ -5,7 +5,7 @@ import { getProducts } from "@service/Api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
  
 
-const Catalog = (params: {page:number, limit:number, searchTerm?: string}) => {
+const Catalog = (params?: {page:number, limit:number, searchTerm?: string}) => {
 
   const [products, setProducts] = useState<iProduct[] | null>(null);
   const [products_counter, setProducts_counter] = useState<number>(0);
@@ -14,7 +14,7 @@ const Catalog = (params: {page:number, limit:number, searchTerm?: string}) => {
   const [error, setError] = useState<string | null>(null);
 
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const  page = params.page || 1 ;
+  const  page = params?.page || 1 ;
   const limit = 5 ;
 
   useEffect(() => {
